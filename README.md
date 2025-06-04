@@ -98,7 +98,6 @@ test_samples = ['beautiful', 'hate', 'amazing', 'rape', 'friendly', 'stupid']
  👩‍💻 Developer
 
 > Developed by AI for Safety ❤️
-> 📬 \[Your Contact or Portfolio Link] (Optional)
 > 💬 Feel free to connect for collaboration or improvements!
 
 🛑 Disclaimer
