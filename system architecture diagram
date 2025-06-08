@@ -1,0 +1,10 @@
++------------------+       +------------------+       +------------------+
+|   Input Layer    |       |   Processing     |       |   Output Layer   |
+|                  |       |   Layer          |       |                  |
++------------------+       +------------------+       +------------------+
+|                  |       |                  |       |                  |
+|  Text Input      |-----> |  Text Analysis   |-----> |  Detection Result|
+|  Audio Input     |-----> |  Audio Analysis  |-----> |  Feedback        |
+|  Image Input     |-----> |  Image Analysis  |-----> |  Alert           |
+|                  |       |                  |       |                  |
++------------------+       +------------------+       +------------------+
