@@ -1,7 +1,4 @@
 
-!wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
-!chmod +x cloudflared
-
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
@@ -227,6 +224,4 @@ with open(app_file, "w") as f:
 !streamlit run app.py &>/content/logs.txt &
 
 import time
-time.sleep(5)  # wait for streamlit to start
-
-!./cloudflared tunnel --url http://localhost:8501 --no-autoupdate           
+time.sleep(5)  # wait for streamlit to start        
