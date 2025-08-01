@@ -1,105 +1,187 @@
-💜 AI-Based Abuse & Domestic Violence Detection System 🛡️
+# 💜 AI-Based Abuse & Domestic Violence Detection System 🛡️
 
-🚺 Empowering Women. Protecting Lives. Enabling Safety.
+🚺 **Empowering Women. Protecting Lives. Enabling Safety.**  
 
-🎯 यह AI-powered Streamlit Web App टेक्स्ट, ऑडियो और इमेज डेटा का उपयोग करके Domestic Violence और Abuse Detection करता है — instantly, intelligently और आसानी से!
+🎯 यह **AI-powered Streamlit Web App** टेक्स्ट, ऑडियो और इमेज डेटा का उपयोग करके  
+**Domestic Violence और Abuse Detection** करता है — instantly, intelligently और आसानी से!
 
-🚀 Features
+---
 
-🔠 Text Detection:
-➡️ Logistic Regression + TF-IDF के ज़रिए abusive keywords से टेक्स्ट का विश्लेषण करता है।
+## **🚀 Features**
 
-🔊 Audio Detection:
-➡️ `librosa` से MFCC फीचर्स एक्सट्रैक्ट करके verbally abusive आवाज़ का अनुमान लगाता है।
+### 🔠 Text Abuse Detection
+- **TF-IDF + Logistic Regression** पर आधारित  
+- Covers **300+ curated phrases**:  
+  - Physical 🥊 | Verbal 🗣 | Emotional 😢 | Financial 💰 | Mental 🧠 | Sexual ⚠️
 
-🧠 Image (Face) Detection:
-➡️ `DeepFace` मॉडल के माध्यम से facial emotion को पहचान कर possible physical abuse का संकेत देता है।
+### 🔊 Audio Abuse Detection
+- **Lightweight RMS Energy Analysis**  
+- Loud/shouting audio → **Verbal Abuse Alert**
 
-📊 Live Streamlit Interface:
-➡️ Simple, clean और secure UI के साथ उपयोग करने में आसान Web App।
+### 🖼 Image (Face) Detection
+- **OpenCV Haarcascade** based face detection  
+- (Future GPU version will include **Emotion-based Abuse Detection**)
 
- 🧠 Technologies Used
+### 📊 Streamlit Interface
+- Clean, simple and responsive UI  
+- Text, Audio, Image तीनों मोड instantly switch कर सकते हैं
 
-| Module                | Use                               |
-| --------------------- | --------------------------------- |
-| `scikit-learn`        | Text-based abuse classification   |
-| `TF-IDF Vectorizer`   | Text vectorization                |
-| `Logistic Regression` | Text classification               |
-| `librosa`             | Audio feature extraction          |
-| `NumPy`               | Numerical operations              |
-| `DeepFace`            | Emotion analysis on facial images |
-| `Streamlit`           | Web App framework                 |
-| `Cloudflared`         | Public URL via ngrok replacement  |
+---
 
-🛠️ Installation
+## **🧠 Technologies Used**
+
+| Module            | Use Case                                  |
+|-------------------|------------------------------------------|
+| **Scikit-learn**   | Text classification (abuse / non-abuse)  |
+| **TF-IDF**         | Text vectorization                       |
+| **Logistic Regression** | Model for abuse detection          |
+| **SoundFile + NumPy**    | Lightweight audio analysis         |
+| **OpenCV**         | Face detection in uploaded images        |
+| **Streamlit**      | Web app frontend                         |
+
+---
+
+## **📂 Project Structure**
+
+```
+
+abuse\_detection\_app/
+│
+├── app.py                # Main Streamlit App
+├── models/
+│   ├── text\_model.pkl     # Trained model (auto-generated if missing)
+│   └── text\_vectorizer.pkl
+├── requirements.txt       # Project dependencies
+└── runtime.txt            # Python version (for Streamlit Cloud)
+
+````
+
+---
+
+## **🛠 Installation**
+
+1️⃣ **Clone the repository**
 
 ```bash
-!pip install streamlit numpy librosa deepface
-!wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
-!chmod +x cloudflared
-```
-💼 Model Training
+git clone https://github.com/my-projects-it/AI-abuse-and-domestic-violence-detection-system.git
+cd AI-abuse-and-domestic-violence-detection-system
+````
 
-```python
-# Text Dataset = abusive_texts + non_abusive_texts
-# Train Logistic Regression on TF-IDF vectors
-# Save to models/text_model.pkl and models/text_vectorizer.pkl
-```
-
-✅ Balanced dataset with 🔁 manually curated abusive & non-abusive phrases!
-
-📦 App Structure
-
-```
-📁 models/
-  ├── text_model.pkl
-  └── text_vectorizer.pkl
-📄 app.py
-```
-
-📌 Note: `app.py` is automatically created and launched.
-
-🔍 Example Test Inputs
-
-```python
-test_samples = ['beautiful', 'hate', 'amazing', 'rape', 'friendly', 'stupid']
-```
-
-👁‍🗨 Prediction Output:
-`0 = Non-Abusive`, `1 = Abusive`
-
-🌐 Run the App (Google Colab Compatible)
+2️⃣ **(Optional) Create Virtual Environment**
 
 ```bash
-!streamlit run app.py &>/content/logs.txt &
-!./cloudflared tunnel --url http://localhost:8501 --no-autoupdate
+python -m venv venv
+source venv/bin/activate    # Mac/Linux
+venv\Scripts\activate       # Windows
 ```
 
-🟢 Wait a few seconds and your public link will appear!
+3️⃣ **Install Requirements**
 
-🎯 Input Options in App
+```bash
+pip install -r requirements.txt
+```
 
-* Text 📜 – Enter plain text or statements.
-* Audio 🎙 – Upload `.wav` files.
-* Image 🖼 – Upload face image to detect emotions.
+4️⃣ **Run Locally**
 
- 🧠 Emotion to Abuse Mapping (Image)
+```bash
+streamlit run app.py
+```
 
-| Emotion          | Abuse Detected    |
-| ---------------- | ----------------- |
-| fear, angry, sad | Physical Abuse ⚠️ |
-| others           | No Abuse ✅        |
+---
 
- 🙏 Acknowledgements
+## **☁️ Deploy to Streamlit Cloud**
 
-💡 Inspired by real-world need for AI-powered women & child safety tools.
-📢 Use it to create awareness, build support systems, or enhance existing safety applications.
+1. Push your repo to **GitHub**
+2. Go to **[Streamlit Cloud](https://share.streamlit.io/)**
+3. **New App → Select Repo → app.py**
+4. Add `runtime.txt` for Python version:
 
- 👩‍💻 Developer
+```
+python-3.10
+```
 
-> Developed by AI for Safety ❤️
-> 💬 Feel free to connect for collaboration or improvements!
+## 🌐 Live Demo
 
-🛑 Disclaimer
+🚀 **[Click Here to Open the App](https://ai-abuse-and-domestic-violence-detection-system-cvzxj7ytmhnlmv.streamlit.app/)**
+*(Best viewed on Desktop for Audio & Image features)*
 
-> ⚠️ This is a prototype and should not be used as a substitute for professional help or legal action. For emergencies, contact official helplines.
+
+---
+
+## **🔍 Detection Categories**
+
+| Category                         | Examples                                                |
+| -------------------------------- | ------------------------------------------------------- |
+| **Physical Abuse** 🥊            | hit, slapped, kicked, dragged, beaten badly             |
+| **Verbal Abuse** 🗣              | yelled, insulted, mocked, humiliated                    |
+| **Emotional/Psychological** 😢   | gaslighted, isolated, ignored, manipulated              |
+| **Sexual Harassment/Assault** ⚠️ | groped, molested, rape attempt, unwanted touch          |
+| **Financial Abuse** 💰           | stole money, demanded salary, restricted bank access    |
+| **Family/Domestic** 🏠           | harassed by relatives, beaten by husband, marital abuse |
+
+---
+
+## **📊 Example Test Inputs**
+
+```python
+test_samples = [
+  "He slapped me",           # Physical Abuse
+  "You are worthless",       # Verbal Abuse
+  "He isolated me from all friends", # Emotional Abuse
+  "She is beautiful",        # Non-Abusive
+  "They demanded my salary", # Financial Abuse
+  "I was molested",          # Sexual Abuse
+]
+```
+
+💡 **Prediction Output:**
+`0 = Non-Abusive` | `1 = Abusive`
+
+---
+
+## **🌐 Future Enhancements (Shakti 2.0)**
+
+* 🔹 **Emotion-based abuse detection (DeepFace / GPU)**
+* 🔹 **Real-time SOS Alerts to Police / NGOs**
+* 🔹 **Heatmap Dashboard for Law Enforcement**
+* 🔹 **Multi-Language Support (Hindi + Regional)**
+
+---
+
+## **👩‍💻 Developer**
+
+**Barkha Jain**
+💡 *AI for Safety | Tech for Social Good*
+
+🌐 [LinkedIn](https://www.linkedin.com/in/barkha-jain-347738373) | [GitHub](https://github.com/my-projects-it)
+
+---
+
+## **🛑 Disclaimer**
+
+⚠️ This prototype is **for research & awareness purposes only**.
+For real emergencies, please contact **official helplines** immediately.
+
+---
+
+### **📜 License**
+
+Apache-2.0 License
+Use responsibly for **social good**.
+
+```
+
+---
+
+Ye README **GitHub landing page jaise** sundar lagega:  
+- Emoji headers  
+- Proper sections  
+- Professional + Social Good tone  
+- Hindi-English mix jaise tumhare **first repo style** me tha  
+
+---
+
+Agar tum chaho to mai tumhare liye **isi README ke sath GitHub pe attractive badges aur shields bhi add** kar sakti hoon jaise **Stars, Forks, License, Tech Stack badges**.  
+
+Kya tum chahti ho mai **badges wale premium README version** bhi bana du?
+```
