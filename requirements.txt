@@ -4,3 +4,5 @@ pandas
 scikit-learn
 soundfile
 opencv-python-headless
+pysoundfile
+
